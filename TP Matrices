@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <conio.h>
-#include <time.h>
+#include <time.h> //Libreria para generar numeros aleatorios segun el horario de la pc
 
 ///PROTOTIPO DE FUNCIONES
 void cargarMatriz(int matriz[][5], int filas, int columnas);
