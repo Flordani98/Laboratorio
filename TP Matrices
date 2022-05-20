@@ -1,0 +1,92 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <conio.h>
+#include <time.h>
+
+///PROTOTIPO DE FUNCIONES
+void cargarMatriz(int matriz[][5], int filas, int columnas);
+void mostrarMatriz(int matriz[][5], int filas, int columnas);
+void cargarMatrizRand(int matriz[][5], int filas, int columnas);
+int sumarMatriz (int matriz[][5], int filas, int columnas);
+
+
+int main()
+{
+    int fila = 2;
+    int columna = 2;
+    int prueba[fila][columna];
+
+    cargarMatriz(prueba, fila, columna);
+    //cargarMatrizRand(prueba, fila,columna);
+    printf("\n\nMATRIZ CARGADA:\n\n");
+    mostrarMatriz(prueba, fila, columna);
+
+    int totalmatriz = sumarMatriz(prueba, fila, columna);
+    printf("\n\n\t SUMA TOTAL DE MATRIZ: %d\n\n", totalmatriz);
+    return 0;
+}
+
+/**1. Hacer una función que reciba como parámetro una matriz de números enteros y permita que el usuario ingrese valores al
+ mismo por teclado. La función debe cargar la matriz por completo.**/
+void cargarMatriz(int matriz[][5], int filas, int columnas)
+{
+    int cont = 0; ///cuenta los elementos que va cargando el usuario
+
+    printf("\n\t\t\t\tCarga de matriz\n\n");
+
+    for (int i = 0; (i < filas); i++)
+    {
+        for (int j = 0; j < columnas ; j++)
+        {
+        cont++;
+        printf("Ingrese valores para cargar la matriz[%d/%d]:", cont, filas*columnas);
+        fflush(stdin);
+        scanf("%i",&matriz[i][j]);
+        }
+    }
+}
+
+//2. Hacer una función que reciba como parámetro una matriz de números enteros y la muestre
+//por pantalla (en formato matricial).
+void mostrarMatriz(int matriz[][5], int filas, int columnas)
+{
+    printf("\n");
+    for(int i = 0; i<filas; i++)
+    {
+        for(int j = 0; j<columnas; j++)
+        {
+            printf("\t%d", matriz[i][j]);
+        }
+        printf("\n\n");
+    }
+}
+///3.Hacer una función que reciba como parámetro una matriz de números enteros y que cargue la misma con números aleatorios
+/// (sin intervención del usuario). La función debe cargar la matriz por completo.
+void cargarMatrizRand(int matriz[][5], int filas, int columnas)
+{
+    srand(time(NULL));
+    int n= 0;
+    for(int i = 0; i<filas; i++)
+    {
+        for(int j = 0; j<columnas; j++)
+        {
+            n = rand() % 51;
+            matriz[i][j] = n;
+        }
+    }
+}
+
+///4. Hacer una función tipo int que sume el contenido total de una matriz de números enteros.
+int sumarMatriz (int matriz[][5], int filas, int columnas)
+{
+    int total = 0;
+
+    for(int i = 0; i<filas; i++)
+    {
+        for(int j= 0; j<columnas; j++)
+        {
+            total = total + matriz[i][j];
+        }
+    }
+    return total;
+}
